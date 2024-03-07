@@ -2,10 +2,27 @@
 
 package com.petblue.entitys;
 
-import no.g9.domain.annotation.G9Group;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@G9Group(nameInModel="Primary")
+/**
+ * @HoangTue
+ */
+@Embeddable
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductOptionsPrimary {
-    int products;
-    int options;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Product_id", nullable = false)
+    private Product products;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "Option_id", nullable = false)
+    private Option options;
+
 }
